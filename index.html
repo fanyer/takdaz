@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>坦克大战游戏</title>
+<style>
+	body{margin:0; padding:0; background-color:#FFF;}
+  img{border:none; vertical-align:top; display:block}
+  p.info{width:496px; height:40px; margin:20px auto; line-height:20px;}
+  .float-left{float:left;}
+  .clear-both{height:0; overflow:hidden; clear:both;}
+  
+  .wall,.bare,.flower,.iron,.water{width:16px; height:16px; float:left; overflow:hidden;}
+  
+  .wall{background:url(images/tankAll.gif) no-repeat 0 -96px;}
+  .bare{background:#000;}
+  .iron{background:url(images/tankAll.gif) no-repeat -16px -96px;}
+  .flower{background:url(images/tankAll.gif) no-repeat -32px -96px;}
+  .water{background:url(images/tankAll.gif) no-repeat -48px -96px;}
+  .lair{width:32px; height:32px; background:url(images/tankAll.gif) no-repeat -256px 0;}
+  
+  #play,#play2{width:32px; height:32px; background:url(images/tankAll.gif) no-repeat; position:absolute; top:384px; left:128px; z-index:2;}
+  #play2{background-position:-128px 0; left:256px;}
+  .enemy,.enemy-fast,.enemy-big{width:32px; height:32px; background:url(images/tankAll.gif); position:absolute;top:0; left:0;}
+  .enemy{background-position:-32px -32px;}
+  .enemy-fast{background-position:-160px -32px; left:192px;}
+  .enemy-big{background-position:-32px -64px; left:384px;}
+  
+  .score{width:32px; height:14px; background:url(images/tankAll.gif) no-repeat; position:absolute; z-index:6;}
+  
+  .play-img{width:32px; height:32px;background:url(images/tankAll.gif) -160px -96px; position:absolute;}
+  .enemy-img{width:32px; height:32px; background:url(images/tankAll.gif) -256px -32px; position:absolute;}
+  .bullet{width:6px; height:6px; background:url(images/tankAll.gif) -80px -96px; position:absolute;}
+  .bomb{width:64px; height:64px; background:url(images/tankAll.gif) 0 -162px; position:absolute;}
+  
+  .annex{width:30px; height:28px; background:url(images/tankAll.gif) -256px -110px; position:absolute; z-index:5;}
+  .over{width:64px; height:32px; background:url(images/tankAll.gif) -384px -64px; position:absolute; z-index:7; top:416px; left:176px;}
+  .enemy-count{width:36px; overflow:hidden; margin:2px auto;}
+  .enemy-life{width:14px; height:14px; background:url(images/tankAll.gif) no-repeat -92px -112px; float:left; margin:2px; display:inline;}
+  .play-life{width:30px; height:32px; background:url(images/tankAll.gif) no-repeat 0 -112px; position:absolute; top:280px; left:25px;}
+  .play2-life{width:30px; height:32px; background:url(images/tankAll.gif) no-repeat -30px -112px; position:absolute; top:320px; left:25px;}
+  .flag{width:32px; height:32px; background:url(images/tankAll.gif) no-repeat -60px -112px; position:absolute; top:360px; left:25px;}
+  .life-num{width:14px; height:14px; background:url(images/tankAll.gif) no-repeat; position:absolute;}
+  .play-life .life-num,.play2-life .life-num{background-position:-256px -96px; left:16px; top:16px;}
+  .flag .life-num{background-position:-256px -96px; left:4px; top:30px;}
+  #main{width:496px; height:416px; margin:20px auto; position:relative; background-color:#000; overflow:hidden;}
+  #left,#right{ width:416px; height:416px; float:left; background:#000;position:relative;}
+  #right{width:80px;}
+  #tank90{width:300px; height:166px; position:absolute; background:#000 url(images/tank.png) no-repeat; left:98px; top:416px;}
+  #tank90 a{ width:80px; height:20px; text-decoration:none; font-size:16px; color:#9e3a00; position:absolute; left:110px; line-height:20px; font-weight:bold;}
+  #play-one{top:100px;}
+  #play-two{top:130px;}
+  
+  #gameLevel{width:0; height:0; padding-top:0; position:absolute; overflow:hidden; top:208px; left:248px; background-color:#7f7f7f; text-align:center; font-size:16px; z-index:10;}
+  #audio{width:480px; height:253px; }
+</style>
+</head>
+
+<body>
+
+
+
+
+<p class="info">
+	鼠标点击选择玩家<br />
+  玩家一： W:向上 A：向左 S：向后 D：向右 J：发射子弹<br />
+  玩家二： ↑：向上 ←：向左 ↓：向后 →：向右  空格：发射子弹
+</p>
+<div id="main">
+  <div id="left">
+  	<div id="gameLevel">第&nbsp;&nbsp;<span>一</span>&nbsp;&nbsp;关</div>
+  </div>
+  <div id="right">
+  
+  </div>
+  <div id="tank90">
+  	<a href="#" id="play-one">1&nbsp;PLAYER</a>
+    <a href="#" id="play-two">2&nbsp;PLAYERS</a>
+  </div>
+</div>
+<div id="audio">
+
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="lec-core.js"></script>
+<script type="text/javascript" src="Constant-demo2.js"></script>
+<script type="text/javascript" src="Map-demo2.js"></script>
+<script type="text/javascript" src="CreateObj.js"></script>
+<script type="text/javascript" src="Score-demo1.js"></script>
+<script type="text/javascript" src="Annex-demo1.js"></script>
+<script type="text/javascript" src="Tank-demo2.js"></script>
+<script type="text/javascript" src="MyTank-demo3.js"></script>
+<script type="text/javascript" src="Bomb-demo2.js"></script>
+<script type="text/javascript" src="Bullet-demo2.js"></script>
+<script type="text/javascript" src="Flick-demo2.js"></script>
+<script type="text/javascript" src="Game-demo1.js"></script>
+<script type="text/javascript" src="Music-demo1.js"></script>
+<script>
+	var oParent = $('left');
+	var oRight = $('right');
+	var oMain = $('main');
+	var oTank90 = $('tank90');
+	var oAudio = $('audio');
+	var oGame = null;
+	startMoveTime(oTank90,{top:125},2000,'linear');
+	var aHref = oTank90.getElementsByTagName('a');
+	for(var i = 0; i < aHref.length; i++){
+		aHref[i].index = i+1;
+		aHref[i].onclick = function(){
+			oTank90.style.display = 'none';
+			oGame = new Game(oParent,oRight,this.index);
+			oGame.startGame();
+		}
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
